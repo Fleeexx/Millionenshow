@@ -5,18 +5,17 @@
  */
 package millionenshow;
 
-import javax.swing.JFrame;
-
 /**
  *
  * @author Felix-Geier
  */
-public class Millionenshow extends JFrame {
-    
-    public Millionenshow() {
-    
+public class StartMillionenshow {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
     }
-    
-    
     
 }
