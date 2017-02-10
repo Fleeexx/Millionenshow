@@ -10,7 +10,6 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
-import java.sql.*;
 import java.util.Vector;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
@@ -20,8 +19,6 @@ import javax.swing.JPanel;
  * @author Felix-Geier
  */
 public class Millionenshow extends JFrame {
-    
-    private Statement s;
     
     private JPanel mainP = new JPanel();
     private JLabel frage = new JLabel("123 TEssssssssssstfdasfdas");
@@ -34,17 +31,11 @@ public class Millionenshow extends JFrame {
     
     public Millionenshow() {
         super("Wer wird Millionaer? - Die Millionenshow");
-//        try {
-//            Class.forName("org.postgresql.Driver");
-//            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Millionenshow", "postgres", "1");
-//            s = connection.createStatement();
+//        
             defineFrame();
+            Frage frage = new Frage(1); // 1 = stufe
             setVisible(true);
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+//        
     }
     
     private void defineFrame() { // 1.
