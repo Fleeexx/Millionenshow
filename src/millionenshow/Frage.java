@@ -17,11 +17,12 @@ public class Frage {
     
     Statement s;
     private int frage_id;
-    private Vector antworten;
+    private Vector<Antwort> antworten;
     private String frage;
     private Random r;
     
     public Frage(int stufe) {
+        antworten = new Vector<Antwort>();
         try {
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Millionenshow", "postgres", "1");
@@ -67,7 +68,7 @@ public class Frage {
         return this.frage;
     }
     
-    public Vector getAntworten() {
+    public Vector<Antwort> getAntworten() {
         return this.antworten;
     }
     
