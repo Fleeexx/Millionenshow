@@ -22,7 +22,7 @@ public class Gui extends JFrame implements ActionListener{
     JPanel mainP;
     JButton []antwortenB;
     JLabel frageL, stufeL;
-    JButton joker;
+    JButton []joker;
     public Gui() {
         super("Wer wird Millionaer? - Die Millionenshow");
     }
@@ -51,7 +51,7 @@ public class Gui extends JFrame implements ActionListener{
         //x = ,y =;
         //inizialisieren
         for (int i = 0; i < 4; i++){
-            new JButton();
+            antwortenB[i] = new JButton();
             //antwortenB[i].setBounds(i, i, i, i);
             antwortenB[i].addActionListener(this);
             antwortenB[i].setVisible(true);
@@ -60,8 +60,17 @@ public class Gui extends JFrame implements ActionListener{
             mainP.add(antwortenB[i]);
         }
         for (int i = 0; i < 4; i++){
-            joker = new JButton();
+            joker[i] = new JButton();
+            //joker[i].setBounds(i, i, i, i);
+            joker[i].addActionListener(this);
+            joker[i].setVisible(true);
+            joker[i].setContentAreaFilled( false );
+            joker[i].setBorder( null );
+            mainP.add(joker[i]);
+            
+            
         }
+        
         mainP = new JPanel();    
         frageL = new JLabel();
         stufeL = new JLabel();
@@ -95,6 +104,9 @@ public class Gui extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         for (int i = 0; i < 4 ; i++){
             if (antwortenB[i] == ae.getSource()){
+                
+            }
+            if(joker[i] == ae.getSource()){
                 
             }
         }
