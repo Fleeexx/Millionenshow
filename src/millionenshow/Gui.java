@@ -20,11 +20,19 @@ import javax.swing.JPanel;
  */
 public class Gui extends JFrame implements ActionListener{
     JPanel mainP;
-    JButton []antwortenB;
+    JButton[] antwortenB;
     JLabel frageL, stufeL;
-    JButton []joker;
+    JButton[] joker;
+    
+    Frage frage;
+    
+    Millionenshow ms;
+    
     public Gui() {
         super("Wer wird Millionaer? - Die Millionenshow");
+        ms = new Millionenshow();
+        defineFrame();
+        reloadFrage();
     }
     
     private void defineFrame() { // 1.
@@ -87,29 +95,38 @@ public class Gui extends JFrame implements ActionListener{
         //größen und farben
     }
     
-    public void setAnwtort(int index, String value) {
-        antwortenB[index].setText(value);
+    private void reloadFrage() {
+        frage = ms.getNeueFrage();
+        frageL.setText(frage.getFrage());
+        for (int i = 0; i < 4; i++) {
+            antwortenB[i].setText(frage.getAntworten().elementAt(i).getAntwort());
+        }
     }
-    public void setFrage(String value) {
-        frageL.setText(value);
-    }
-    public void setStufe(int stufe){
-        stufeL.setText("" + stufe);
-    }
-    
-    
-    
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        for (int i = 0; i < 4 ; i++){
-            if (antwortenB[i] == ae.getSource()){
-                
-            }
-            if(joker[i] == ae.getSource()){
-                
+        for (int i = 0; i < 4 ; i++) {
+            if (antwortenB[i] == ae.getSource()) {
+                if (ms.antwortUeberprufen(i)) {
+                    if (ms.getStufe() == 16) {
+                        gewonnen();
+                    } else {
+                        frage = ms.getNeueFrage();
+                    }
+                } else {
+                    verloren();
+                }
             }
         }
     }
+    
+    private void verloren() {
+        
+    }
+    private void gewonnen() {
+        
+    }
+    // GUI xy und design
+    
     
 }
