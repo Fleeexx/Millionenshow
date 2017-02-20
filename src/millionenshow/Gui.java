@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -41,8 +42,8 @@ public class Gui extends JFrame implements ActionListener{
         Dimension d = t.getScreenSize();
         
         int x, y, width, height;
-        width = 500;
-        height = 400;
+        width = 800;
+        height = 600;
         
         // Berechnet Bildschirmmittelpunkt - Fenstergröße
         x = (int) ((d.getWidth() - width) / 2);
@@ -56,6 +57,9 @@ public class Gui extends JFrame implements ActionListener{
         
         // Hauptpanel hinzufügen
         add(mainP);
+        
+        mainP.add(new JLabel(new ImageIcon(System.getProperty("user.dir") + "\\background.png")));
+        
         //x = ,y =;
         //inizialisieren
         for (int i = 0; i < 4; i++){
@@ -111,7 +115,7 @@ public class Gui extends JFrame implements ActionListener{
                     if (ms.getStufe() == 16) {
                         gewonnen();
                     } else {
-                        frage = ms.getNeueFrage();
+                        reloadFrage();
                     }
                 } else {
                     verloren();
@@ -121,10 +125,10 @@ public class Gui extends JFrame implements ActionListener{
     }
     
     private void verloren() {
-        
+        // RIP
     }
     private void gewonnen() {
-        
+        // Money Rain
     }
     // GUI xy und design
     
