@@ -20,10 +20,10 @@ import javax.swing.JPanel;
  * @author Felix-Geier
  */
 public class Gui extends JFrame implements ActionListener{
-    JPanel mainP;
-    JButton[] antwortenB;
-    JLabel frageL, stufeL;
-    JButton[] joker;
+    JPanel mainP = new JPanel();
+    JButton[] antwortenB = new JButton[4];
+    JLabel frageL = new JLabel(), stufeL = new JLabel();
+    JButton[] joker = new JButton[3];
     
     Frage frage;
     
@@ -34,6 +34,7 @@ public class Gui extends JFrame implements ActionListener{
         ms = new Millionenshow();
         defineFrame();
         reloadFrage();
+        setVisible(true);
     }
     
     private void defineFrame() { // 1.
@@ -43,7 +44,7 @@ public class Gui extends JFrame implements ActionListener{
         
         int x, y, width, height;
         width = 800;
-        height = 600;
+        height = 640;
         
         // Berechnet Bildschirmmittelpunkt - Fenstergröße
         x = (int) ((d.getWidth() - width) / 2);
@@ -57,7 +58,6 @@ public class Gui extends JFrame implements ActionListener{
         
         // Hauptpanel hinzufügen
         add(mainP);
-        
         mainP.add(new JLabel(new ImageIcon(System.getProperty("user.dir") + "\\background.png")));
         
         //x = ,y =;
@@ -71,7 +71,7 @@ public class Gui extends JFrame implements ActionListener{
             antwortenB[i].setBorder( null );
             mainP.add(antwortenB[i]);
         }
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 3; i++){
             joker[i] = new JButton();
             //joker[i].setBounds(i, i, i, i);
             joker[i].addActionListener(this);
@@ -82,10 +82,6 @@ public class Gui extends JFrame implements ActionListener{
             
             
         }
-        
-        mainP = new JPanel();    
-        frageL = new JLabel();
-        stufeL = new JLabel();
         
         // adden
         mainP.add(frageL);
